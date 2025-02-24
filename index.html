@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mahila Shakti</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- New Navbar with Gradient Background -->
+    <nav class="gradient-navbar">
+        <div class="logo-container">
+            <img src="Images/MahilaShakti.jpg" alt="Mahila Shakti Logo" class="logo-img"> <!-- Logo image -->
+        </div>
+    </nav>
+
+    <!-- Existing Navbar -->
+    <nav class="navbar">
+        <div class="logo">Mahila Shakti</div>
+        <ul class="nav-links">
+            <br>
+            
+            <li><a href="https://mahilashakti.netlify.app/">Home</a></li>
+            <br>
+            <li><a href="https://www.google.com/maps/@18.6155008,73.908224,13z?entry=ttu">Location</a></li>
+            <br>
+            <li><a href="mailto:rvanjari960@gmail.com">Contact Authorities</a></li>
+            <br>
+            <li><a href="SOS/SOSpage.html" >SOS</a></li>
+            <br>
+            <li><a href="Profile/profile.html">My Profile</a></li>
+            <br>
+            <li><a href="Login/login.html">Login</a></li>
+        </ul>
+    </nav>
+
+    <div id="home" class="content">
+        <div class="boxes">
+            <a href="SOS/SOSpage.html" class="box1">SOS</a>
+            <a href="Nearest Police Station/list.html" class="box">Nearest Police Station</a>
+            <a href="Nearest Volunteers/volunteers.html" class="box">Nearest Volunteers List</a>
+            <a href="Notification/notification.html" class="box">Notification</a>
+        </div>
+    </div>
+
+    <!-- Other sections with matching IDs -->
+    <div id="contact-authorities" class="content" style="display:none">
+        <h1>Contact Authority</h1>
+        <p>Contact the authority here.</p>
+    </div>
+
+    <div id="sos" class="content" style="display:none">
+        <h1>SOS</h1>
+        <p>Use SOS in emergencies.</p>
+    </div>
+
+    <div id="login" class="content" style="display:none">
+        <h1>Login</h1>
+        <p>Please log in to your account.</p>
+    </div>
+
+    <!-- Dashboard Section -->
+    <div class="dashboard-container">
+        <h1>Visitor Dashboard</h1>
+        
+        <div class="charts-container">
+            <div class="chart-card">
+                <h2>Visitor Distribution</h2>
+                <canvas id="visitorPieChart"></canvas>
+            </div>
+            
+            <div class="chart-card">
+                <h2>Visitor Counts</h2>
+                <canvas id="visitorBarChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Chart.js script for visitor distribution pie chart
+        const ctxPie = document.getElementById('visitorPieChart').getContext('2d');
+        const visitorPieChart = new Chart(ctxPie, {
+            type: 'pie',
+            data: {
+                labels: ['Daily', 'Monthly', 'Yearly', 'Total'],
+                datasets: [{
+                    label: 'Visitor Distribution',
+                    data: [120, 5000, 60000, 200000],
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(255, 159, 64, 0.6)',
+                        'rgba(153, 102, 255, 0.6)'
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.label + ': ' + tooltipItem.raw;
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Chart.js script for visitor counts bar chart
+        const ctxBar = document.getElementById('visitorBarChart').getContext('2d');
+        const visitorBarChart = new Chart(ctxBar, {
+            type: 'bar',
+            data: {
+                labels: ['Daily Visitors', 'Monthly Visitors', 'Yearly Visitors', 'Total Visitors'],
+                datasets: [{
+                    label: 'Visitor Counts',
+                    data: [120, 500, 600, 2000],
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(255, 159, 64, 0.6)',
+                        'rgba(153, 102, 255, 0.6)'
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(153, 102, 255, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(tooltipItem) {
+                                return tooltipItem.label + ': ' + tooltipItem.raw;
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+    </script>
+    
+    <div class="footer">
+        <a href="https://mahilashakti.netlify.app/">Back to Home</a>
+    </div>
+</body>
+</html>
